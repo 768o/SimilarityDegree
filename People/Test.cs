@@ -13,42 +13,55 @@ namespace Recommend
         {
             List<User> List_User = new List<User>();
             User user = new User();
+            Hashtable item = new Hashtable();
+            item.Add(1, 2);
+            item.Add(2, 0.5);
+            item.Add(4, 1);
             user.id = 1;
-            user.ListGrade = new List<Grade> {
-                new Grade{Item=1 , Score=4.0 },
-                new Grade{Item=2 , Score=3.0 },
-                new Grade{Item=3 , Score=2.5 },
-            };
+            user.Items =item;
             List_User.Add(user);
+
             user = new User();
+            item = new Hashtable();
+            item.Add(1, 4);
+            item.Add(2, 2);
+            item.Add(3, 1);
+            item.Add(4, 2);
+            item.Add(5, 0);
             user.id = 2;
-            user.ListGrade = new List<Grade> {
-                new Grade{Item=1 , Score=2.0 },
-                new Grade{Item=2 , Score=2.5 },
-                new Grade{Item=3 , Score=4.0 },
-            };
+            user.Items = item;
             List_User.Add(user);
+
             user = new User();
+            item = new Hashtable();
+            item.Add(1, 1);
+            item.Add(3, 2);
+            item.Add(4, 1);
+            item.Add(5, 0);
+            item.Add(6, 1);
             user.id = 3;
-            user.ListGrade = new List<Grade> {
-                new Grade{Item=1 , Score=1.5 },
-            };
+            user.Items = item;
             List_User.Add(user);
+
             user = new User();
+            item = new Hashtable();
+            item.Add(1, 2);
+            item.Add(4, 2);
+            item.Add(5, 3);
             user.id = 4;
-            user.ListGrade = new List<Grade> {
-                new Grade{Item=1 , Score=3.0 },
-                new Grade{Item=3 , Score=3.0 },
-            };
+            user.Items = item;
             List_User.Add(user);
+
             user = new User();
+            item = new Hashtable();
+            item.Add(3, 2);
+            item.Add(4, 2);
+            item.Add(5, 0);
+            item.Add(6, 1);
             user.id = 5;
-            user.ListGrade = new List<Grade> {
-                new Grade{Item=1 , Score=2.0 },
-                new Grade{Item=2 , Score=3.0 },
-                new Grade{Item=3 , Score=2.0 },
-            };
+            user.Items = item;
             List_User.Add(user);
+
             return List_User;
         }
         static void Main(string[] args)
@@ -60,10 +73,18 @@ namespace Recommend
                 if (Goal_User.id == user.id)
                     Goal_User = user;
 
-            Hashtable ht = Goal_User.GetFriendlyUser(List_User);
+            Hashtable ht = Goal_User.GetSimilarityDegrees(List_User);
             foreach(DictionaryEntry de in ht) 
-                Console.WriteLine("User"+de.Key + "," + "相似度" + de.Value);
+                Console.WriteLine("User"+de.Key + ",   " + de.Value);
+            Console.WriteLine("Enter Get Recomment");
             Console.ReadKey();
+
+            Hashtable ht1 = Goal_User.GetRecommendItem(List_User);
+            foreach (DictionaryEntry de in ht1)
+                Console.WriteLine("Item" + de.Key + ",   " + de.Value);
+            Console.ReadKey();
+
+
         }
     }
 }
