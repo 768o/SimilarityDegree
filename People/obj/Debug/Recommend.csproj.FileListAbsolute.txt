@@ -1,0 +1,7 @@
+C:\Users\huo\source\repos\People\People\bin\Debug\Recommend.exe.config
+C:\Users\huo\source\repos\People\People\bin\Debug\Recommend.exe
+C:\Users\huo\source\repos\People\People\bin\Debug\Recommend.pdb
+C:\Users\huo\source\repos\People\People\obj\Debug\Recommend.csprojResolveAssemblyReference.cache
+C:\Users\huo\source\repos\People\People\obj\Debug\Recommend.csproj.CoreCompileInputs.cache
+C:\Users\huo\source\repos\People\People\obj\Debug\Recommend.exe
+C:\Users\huo\source\repos\People\People\obj\Debug\Recommend.pdb
