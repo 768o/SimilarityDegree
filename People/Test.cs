@@ -69,7 +69,7 @@ namespace Recommend
         static void Main(string[] args)
         {
             List<User> List_User = GetMovielens();
-            User Goal_User = new User { id = 5 };//目标用户id为1
+            User Goal_User = new User { id = 1 };//目标用户id为1
 
             foreach (User user in List_User)
                 if (Goal_User.id == user.id)
@@ -106,53 +106,51 @@ namespace Recommend
             Console.WriteLine("共推荐" + sum +"条数据");
             Console.WriteLine("前xx条数据为");
             int n = 0;
-            int[] Rkey = new int[20];
+            int[] Rkey = new int[10];
             foreach (int i in keyArray) {
                 if (n >= Rkey.Length) break;
-                Console.WriteLine("Item" + i + ",   " + double.Parse(ht1[i].ToString()));
-                Rkey[n] = i;
-                n++;
-               
+                if (double.Parse(ht1[i].ToString())>0) {
+                    Console.WriteLine("Item" + i + ",   " + double.Parse(ht1[i].ToString()));
+                    Rkey[n] = i;
+                    n++;
+                }
             }
             IService service = new ServiceImpl();
-            DataTable rating = service.SelectToDateTable("View1", null, null);//推测数据，80条左右
-            DataTable yes = service.SelectToDateTable("View", null, null);//正确数据，93条左右
-            int rn = 0;
+            DataTable rating = service.SelectToDateTable("YCSJ", null, null);//推测数据
+            DataTable yes = service.SelectToDateTable("DBSJ", null, null);//正确数据，101条左右
             int y = 0;
             foreach (int i in Rkey) {
-                rn++;
-                
                 foreach (DataRow row in yes.Rows) {
-                    int iii = int.Parse((row[1].ToString()));
-                    if (int.Parse((row[1].ToString())) == i) {
+                    int iii = int.Parse((row[2].ToString()));
+                    if (int.Parse((row[2].ToString())) == i) {
                         y++;
                     }
                 }
             }
             double d1 = y;
-            double d2 = rn;
-            Console.WriteLine("推荐" + rn + ",   " + "相关" + y);
-            Console.WriteLine("准确率" +d1/rn + ",   " + "召回率" + d1/93);
+            double d2 = n;
+            Console.WriteLine("推荐" + n + ",   " + "相关" + y);
+            Console.WriteLine("准确率" +d1/n + ",   " + "召回率" + d1/101);
 
             Console.ReadKey();
         }
         public static List<User> GetMovielens() {
             IService service = new ServiceImpl();
-            DataTable rating = service.SelectToDateTable("View1", null, "user_id ASC");
-            DataTable yes = service.SelectToDateTable("View", null, "user_id ASC");//正确数据，80条左右
+            DataTable rating = service.SelectToDateTable("YCSJ", null, "user_id ASC");
+            DataTable yes = service.SelectToDateTable("DBSJ", null, "user_id ASC");//正确数据，80条左右
             //string r = service.Select("View1", null, "user_id ASC");
             Hashtable readuser = new Hashtable();
             foreach (DataRow Row in rating.Rows) {
-                int user_id = int.Parse(Row[1].ToString());
+                int user_id = int.Parse(Row[2].ToString());
                 if (readuser.ContainsKey(user_id))
                 {
-                    ((Hashtable)readuser[user_id]).Add(int.Parse(Row[2].ToString()), double.Parse(Row[3].ToString())-2.5);
+                    ((Hashtable)readuser[user_id]).Add(int.Parse(Row[1].ToString()), double.Parse(Row[3].ToString())-3);
                     //((double.Parse(Row[3].ToString()) - 2) > 0) ? (double.Parse(Row[3].ToString()) - 2) : 0
                 }
                 else
                 {
                     Hashtable table = new Hashtable();
-                    table.Add(int.Parse(Row[2].ToString()), double.Parse(Row[3].ToString())-2.5);
+                    table.Add(int.Parse(Row[1].ToString()), double.Parse(Row[3].ToString())-3);
                     //((double.Parse(Row[3].ToString()) - 2) > 0) ? (double.Parse(Row[3].ToString()) - 2) : 0
                     readuser.Add(user_id, new Hashtable());
                 }

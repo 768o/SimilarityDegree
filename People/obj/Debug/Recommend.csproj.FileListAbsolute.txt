@@ -21,3 +21,12 @@ E:\SimilarityDegree\People\bin\Debug\MySQL_EC.dll
 E:\SimilarityDegree\People\bin\Debug\MySql.Data.dll
 E:\SimilarityDegree\People\bin\Debug\MySql.Data.xml
 E:\SimilarityDegree\People\obj\Debug\Recommend.csprojResolveAssemblyReference.cache
+E:\Git\SimilarityDegree\People\bin\Debug\Recommend.exe.config
+E:\Git\SimilarityDegree\People\bin\Debug\Recommend.exe
+E:\Git\SimilarityDegree\People\bin\Debug\Recommend.pdb
+E:\Git\SimilarityDegree\People\bin\Debug\MySQL_EC.dll
+E:\Git\SimilarityDegree\People\bin\Debug\MySql.Data.dll
+E:\Git\SimilarityDegree\People\bin\Debug\MySql.Data.xml
+E:\Git\SimilarityDegree\People\obj\Debug\Recommend.csprojResolveAssemblyReference.cache
+E:\Git\SimilarityDegree\People\obj\Debug\Recommend.exe
+E:\Git\SimilarityDegree\People\obj\Debug\Recommend.pdb
