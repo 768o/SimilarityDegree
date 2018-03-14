@@ -11,6 +11,7 @@ C:\Users\lin\Desktop\SimilarityDegree-master\SimilarityDegree-master\People\bin\
 C:\Users\lin\Desktop\SimilarityDegree-master\SimilarityDegree-master\People\obj\Debug\Recommend.csprojResolveAssemblyReference.cache
 C:\Users\lin\Desktop\SimilarityDegree-master\SimilarityDegree-master\People\obj\Debug\Recommend.exe
 C:\Users\lin\Desktop\SimilarityDegree-master\SimilarityDegree-master\People\obj\Debug\Recommend.pdb
+<<<<<<< HEAD
 E:\SimilarityDegree\People\bin\Debug\Recommend.exe.config
 E:\SimilarityDegree\People\bin\Debug\Recommend.exe
 E:\SimilarityDegree\People\bin\Debug\Recommend.pdb
@@ -21,3 +22,5 @@ E:\SimilarityDegree\People\bin\Debug\MySQL_EC.dll
 E:\SimilarityDegree\People\bin\Debug\MySql.Data.dll
 E:\SimilarityDegree\People\bin\Debug\MySql.Data.xml
 E:\SimilarityDegree\People\obj\Debug\Recommend.csprojResolveAssemblyReference.cache
+=======
+>>>>>>> b47198d90336fdf5e5a5380c1af223e38e305dc6

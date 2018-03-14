@@ -19,6 +19,7 @@ namespace Recommend
                 double Degree = GetSimilarityDegree(user);
                 Hashtable NotCommonItem = GetDifferent(user, false);
                 foreach (DictionaryEntry Item in NotCommonItem) {
+<<<<<<< HEAD
                     if (Degree == -1) {
                         continue;
                     }
@@ -43,6 +44,27 @@ namespace Recommend
             //    RecommendItem[Item.Key] = double.Parse(RecommendItem[Item.Key].ToString()) 
             //                            / double.Parse(RecommendItemNum[Item.Key].ToString());
             //}平均
+=======
+                    if (RecommendItem.ContainsKey(Item.Key))
+                    {
+                        double Item1= double.Parse(RecommendItem[Item.Key].ToString());
+                        Item_Grade = double.Parse(RecommendItem[Item.Key].ToString())
+                            + double.Parse(user.Items[Item.Key].ToString()) * Degree;
+                        RecommendItem[Item.Key] = Item_Grade;
+                        RecommendItemNum[Item.Key] = int.Parse(RecommendItemNum[Item.Key].ToString()) + 1;
+                    }
+                    else {
+                        Item_Grade = double.Parse(user.Items[Item.Key].ToString()) * Degree;
+                        RecommendItem.Add(Item.Key, Item_Grade);
+                        RecommendItemNum.Add(Item.Key, 1);
+                    }
+                }
+            }
+            foreach (DictionaryEntry Item in RecommendItemNum) {
+                RecommendItem[Item.Key] = double.Parse(RecommendItem[Item.Key].ToString()) 
+                                        / double.Parse(RecommendItemNum[Item.Key].ToString());
+            }
+>>>>>>> b47198d90336fdf5e5a5380c1af223e38e305dc6
             return RecommendItem;
         }
         public Hashtable GetSimilarityDegrees(List<User> users)
