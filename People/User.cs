@@ -1,44 +1,76 @@
-﻿using System;
+﻿
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Recommend
 {
     class User
     {
         public int id { set; get; }
-        public List<Grade> ListGrade { set; get; }
-
-        public Hashtable GetFriendlyUser(List<User> ListUser)
+        public Hashtable Items { set; get; }
+        public Hashtable GetRecommendItem(List<User> users)
         {
-            Hashtable ht = null;
-            if (ListUser != null)
+            Hashtable RecommendItem = new Hashtable();
+            Hashtable RecommendItemNum = new Hashtable();
+            foreach (User user in users)
             {
-                ht = new Hashtable();
-                foreach (User user in ListUser)//遍历所有用户
-                {
-                    if (id == user.id) continue;//跳过自己
-                    else
-                    {
-                        double Euclidean_Metric = GetSimilarityDegree(user.ListGrade);//获得目标用户与其他用户之间的相似度
-                        ht.Add(user.id, Euclidean_Metric);//把某用户id与其对应的相似度加入Hashtable
+                double Item_Grade = 0;
+                double Degree = GetSimilarityDegree(user);
+                Hashtable NotCommonItem = GetDifferent(user, false);
+                foreach (DictionaryEntry Item in NotCommonItem) {
+                    if (Degree == -1) {
+                        continue;
+                    }
+                    else { 
+                    if (RecommendItem.ContainsKey(Item.Key))
+                        {
+                            double Item1= double.Parse(RecommendItem[Item.Key].ToString());
+                            Item_Grade = double.Parse(RecommendItem[Item.Key].ToString())
+                                + double.Parse(user.Items[Item.Key].ToString()) * Degree;
+                            RecommendItem[Item.Key] = Item_Grade;
+                            RecommendItemNum[Item.Key] = int.Parse(RecommendItemNum[Item.Key].ToString()) + 1;
+                        }
+                        else {
+                            Item_Grade = double.Parse(user.Items[Item.Key].ToString()) * Degree;
+                            RecommendItem.Add(Item.Key, Item_Grade);
+                            RecommendItemNum.Add(Item.Key, 1);
+                        }
                     }
                 }
             }
-            return ht;
+            //foreach (DictionaryEntry Item in RecommendItemNum) {
+            //    RecommendItem[Item.Key] = double.Parse(RecommendItem[Item.Key].ToString()) 
+            //                            / double.Parse(RecommendItemNum[Item.Key].ToString());
+            //}平均
+            return RecommendItem;
         }
-
-        private double GetSimilarityDegree(List<Grade> ListGrade) {
-            double EM = 0;//欧几里得距离中各项的E(x-y)的平方的和
-            if (this.ListGrade != null)  
-                foreach (Grade user_grade in this.ListGrade)//遍历自己的所有评分
-                    foreach (Grade other_user_grade in ListGrade)//遍历其他用户的所有评分
-                        if (user_grade.Item == other_user_grade.Item)//如果两用户对同一个Item评过分
-                            EM += Math.Pow((user_grade.Score - other_user_grade.Score), 2);
-            return 1 / (1 + Math.Sqrt(EM));//两用户相似度
+        public Hashtable GetSimilarityDegrees(List<User> users)
+        {
+            Hashtable AllSimilarityDegree = new Hashtable();
+            foreach (User user in users) AllSimilarityDegree.Add(user.id, GetSimilarityDegree(user));
+            return AllSimilarityDegree;
+        }
+        private double GetSimilarityDegree(User user)
+        {
+            Hashtable CommonItem = GetDifferent(user, true);
+            double EM = 0;
+            if (CommonItem.Count > 0)
+            {
+                foreach (DictionaryEntry Item in CommonItem)
+                    EM += Math.Pow(double.Parse(Items[Item.Key].ToString())
+                    - double.Parse(user.Items[Item.Key].ToString()), 2);//欧几里德距离
+                return 1 / (1 + Math.Sqrt(EM));//两用户相似度
+            }
+            else return -1;//两用户没一样的
+        }
+        private Hashtable GetDifferent(User user, bool common)//找不同，true表示找相同的，false表示找不同的
+        {
+            Hashtable CommonItem = new Hashtable();
+            foreach (DictionaryEntry user_item in user.Items)
+                if (!this.Items.ContainsKey(user_item.Key) ^ common)
+                    CommonItem.Add(user_item.Key, null);
+            return CommonItem;
         }
     }
 }
