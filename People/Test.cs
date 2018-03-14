@@ -76,7 +76,6 @@ namespace Recommend
                     Goal_User = user;
 
             Hashtable ht = Goal_User.GetSimilarityDegrees(List_User);
-<<<<<<< HEAD
             foreach (DictionaryEntry de in ht) 
                 Console.WriteLine("User"+de.Key + ",   " + de.Value);
             Console.WriteLine("Enter Get Recomment");
@@ -105,7 +104,7 @@ namespace Recommend
                     Console.WriteLine("Item" + de.Key + ",   " + de.Value);
                 }
             Console.WriteLine("共推荐" + sum +"条数据");
-            Console.WriteLine("前80条数据为");
+            Console.WriteLine("前xx条数据为");
             int n = 0;
             int[] Rkey = new int[20];
             foreach (int i in keyArray) {
@@ -135,19 +134,7 @@ namespace Recommend
             Console.WriteLine("推荐" + rn + ",   " + "相关" + y);
             Console.WriteLine("准确率" +d1/rn + ",   " + "召回率" + d1/93);
 
-=======
-            foreach(DictionaryEntry de in ht) 
-                Console.WriteLine("User"+de.Key + ",   " + de.Value);
-            Console.WriteLine("Enter Get Recomment");
->>>>>>> b47198d90336fdf5e5a5380c1af223e38e305dc6
             Console.ReadKey();
-
-            Hashtable ht1 = Goal_User.GetRecommendItem(List_User);
-            foreach (DictionaryEntry de in ht1)
-                Console.WriteLine("Item" + de.Key + ",   " + de.Value);
-            Console.ReadKey();
-
-
         }
         public static List<User> GetMovielens() {
             IService service = new ServiceImpl();
