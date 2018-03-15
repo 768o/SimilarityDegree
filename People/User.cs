@@ -51,6 +51,32 @@ namespace Recommend
             foreach (User user in users) AllSimilarityDegree.Add(user.id, GetSimilarityDegree(user));
             return AllSimilarityDegree;
         }
+        public List<User> GetSimilarityDegrees(List<User> users, int K) {
+            
+            Hashtable AllSimilarityDegree = GetSimilarityDegrees(users);
+            List<User> listuser = new List<User>();
+
+            int[] SimilarityDegreesSort = new int[AllSimilarityDegree.Count];//存储用户相似度排序
+            double[] SimilarityDegreesSort_V = new double[AllSimilarityDegree.Count];//存储用户相似度排序
+            AllSimilarityDegree.Keys.CopyTo(SimilarityDegreesSort, 0);
+            AllSimilarityDegree.Values.CopyTo(SimilarityDegreesSort_V, 0);
+            Array.Sort(SimilarityDegreesSort_V, SimilarityDegreesSort);
+            Array.Reverse(SimilarityDegreesSort);//排序
+
+            foreach (int i in SimilarityDegreesSort)
+            {
+                if ((K+1) <= 0) break;
+                K--;
+                //Console.WriteLine("User" + i + ",   " + AllSimilarityDegree[i]);
+                foreach (User u in users) {
+                    if (u.id == i) {
+                        listuser.Add(u);
+                    }
+                }
+            }
+            
+            return listuser;
+        }
         private double GetSimilarityDegree(User user)
         {
             Hashtable CommonItem = GetDifferent(user, true);
