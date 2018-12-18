@@ -32,11 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="MySQL_EC">
       <HintPath>..\dll\MySQL_EC.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,14 +52,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Grade.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="Movie.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Movie.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Movie.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Movie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Movie.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Movie.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="rating.cs">
+      <DependentUpon>Movie.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Recommend.cs" />
     <Compile Include="Test.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User_old.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="[Obsolete]\Grade.cs" />
+    <Compile Include="[Obsolete]\Test.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="[Obsolete]\User_old.cs" />
+    <Compile Include="[Obsolete]\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="Movie.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Movie.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Movie.edmx.diagram">
+      <DependentUpon>Movie.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Movie.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Movie.edmx</DependentUpon>
+      <LastGenOutput>Movie.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Movie.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Movie.edmx</DependentUpon>
+      <LastGenOutput>Movie.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

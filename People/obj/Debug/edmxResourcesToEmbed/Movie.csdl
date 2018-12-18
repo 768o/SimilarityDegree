@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MovieLensModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="rating">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="user_id" Type="Int64" />
+    <Property Name="movie_id" Type="Int64" />
+    <Property Name="rating1" Type="Int64" Nullable="false" />
+    <Property Name="rated_at" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="MovieLensEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ratings" EntityType="Self.rating" />
+  </EntityContainer>
+</Schema>

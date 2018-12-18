@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MovieLensModelStoreContainer" CdmEntityContainer="MovieLensEntities">
+    <EntitySetMapping Name="ratings">
+      <EntityTypeMapping TypeName="MovieLensModel.rating">
+        <MappingFragment StoreEntitySet="rating">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="movie_id" ColumnName="movie_id" />
+          <ScalarProperty Name="rating1" ColumnName="rating" />
+          <ScalarProperty Name="rated_at" ColumnName="rated_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

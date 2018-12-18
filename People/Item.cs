@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Recommend
 {
-    class Grade
+    public class Item
     {
-        public int Item { set; get; }
-        public double Score { set; get; }
+        public string Id;
+        public double Score;
     }
 }

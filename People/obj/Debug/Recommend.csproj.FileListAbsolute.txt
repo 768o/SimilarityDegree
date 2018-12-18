@@ -40,3 +40,17 @@ C:\SimilarityDegree\People\obj\Debug\Recommend.csprojResolveAssemblyReference.ca
 C:\SimilarityDegree\People\obj\Debug\Recommend.csproj.CoreCompileInputs.cache
 C:\SimilarityDegree\People\obj\Debug\Recommend.exe
 C:\SimilarityDegree\People\obj\Debug\Recommend.pdb
+F:\git\推荐算法\SimilarityDegree\People\bin\Debug\Recommend.exe.config
+F:\git\推荐算法\SimilarityDegree\People\bin\Debug\Recommend.exe
+F:\git\推荐算法\SimilarityDegree\People\bin\Debug\Recommend.pdb
+F:\git\推荐算法\SimilarityDegree\People\bin\Debug\MySQL_EC.dll
+F:\git\推荐算法\SimilarityDegree\People\bin\Debug\MySql.Data.dll
+F:\git\推荐算法\SimilarityDegree\People\bin\Debug\MySql.Data.xml
+F:\git\推荐算法\SimilarityDegree\People\obj\Debug\Recommend.csprojAssemblyReference.cache
+F:\git\推荐算法\SimilarityDegree\People\obj\Debug\Recommend.csproj.CoreCompileInputs.cache
+F:\git\推荐算法\SimilarityDegree\People\obj\Debug\Recommend.csproj.CopyComplete
+F:\git\推荐算法\SimilarityDegree\People\obj\Debug\Recommend.exe
+F:\git\推荐算法\SimilarityDegree\People\obj\Debug\Recommend.pdb
+F:\git\推荐算法\SimilarityDegree\People\bin\Debug\EntityFramework.dll
+F:\git\推荐算法\SimilarityDegree\People\bin\Debug\EntityFramework.xml
+F:\git\推荐算法\SimilarityDegree\People\bin\Debug\zh-Hans\EntityFramework.resources.dll
